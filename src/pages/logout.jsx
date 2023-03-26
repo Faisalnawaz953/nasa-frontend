@@ -8,6 +8,7 @@ export default function Logout() {
     
     
     useEffect(()=>{
+        
         axios.get('http://localhost:5000/api/logout',
         {
           withCredentials: true,

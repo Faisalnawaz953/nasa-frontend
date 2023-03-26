@@ -10,6 +10,7 @@ export const successToaster = (message) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined
+    
   });
 };
 

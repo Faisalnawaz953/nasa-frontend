@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import "./App.css";
 import Signin from "./pages/login";
+
 import Register from "./pages/register";
 import Navbar from "./components/header";
 import { ToastContainer } from "react-toastify";
@@ -11,7 +12,7 @@ import Logout from "./pages/logout";
 function App() {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer limit={1} />
       <Navbar />
 
       <Routes>

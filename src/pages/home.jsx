@@ -1,38 +1,31 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDailyImage } from '../api/nasa-image';
-import getUser from '../hooks/get-user';
+import Loader from '../components/Loader';
+import getUser from "../hooks/queries/get-user"
+import useGetImage from '../hooks/queries/get-image';
 
 export default function Home() {
 const navigate= useNavigate()
+
 const user = getUser();
 console.log("user",user.data)
-  const [image, setImage] = useState([])
-  useEffect(() => {
- 
+const {data, isLoading} = useGetImage()
+
   
-    const getImage = async () => {
-      
-      const res = await getDailyImage();
-      if(res){
-        setImage(res.url);
-        console.log('image', res.url);
-      }
-      else{
-        navigate('/login')
-      }
-    };
-    getImage();
-  }, [setImage]);
-  console.log(image);
+  console.log("data",data?.url, isLoading)
+
 
   return (
     <div className='my-9'>
 
-      <h1 className='text-4xl text-center font-semibold'> NASA Daily Image</h1>
+      <h1 className='text-4xl text-center font-semibold'> NASA Daily Image/Vedio</h1>
       <div className='flex justify-center my-9'>
-      <img src={image}  height={700} width={700}></img>
+        {!isLoading ? 
+        (data?.media_type=="video" ?
+        <iframe width="1000" height="600" src={data?.url} title="Nasa Vedio"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+       
+  : <img src={data?.url}  height={700} width={700}></img> ): <Loader/>}
+     
       </div>
     </div>
   )

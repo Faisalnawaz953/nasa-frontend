@@ -1,15 +1,15 @@
 import { Popover } from "@headlessui/react";
 import { Disclosure } from "@headlessui/react";
+import { useQueryClient } from "react-query";
+import { GET_USER } from "../contants/query-contant";
+import getUser from "../hooks/queries/get-user"
 
-import getUser from "../hooks/get-user";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Navbar() {
   const user= getUser();
-console.log("user",user)
+const queryClient = useQueryClient();
+
+queryClient.refetchQueries([GET_USER])
   return (
     <div >
       <header>
