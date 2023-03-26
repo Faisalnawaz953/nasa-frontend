@@ -9,19 +9,18 @@ import { errorToaster, successToaster } from "../utils/toasts";
 import { loginSchema } from "../utils/yupValidations";
 import { useUserLogin } from "../hooks/mutations/login-user";
 import { useNavigate } from "react-router-dom";
-import GoogleLogin from "../components/googleLogin";
 import { useQueryClient } from "react-query";
-import {useGoogleLogin} from '@react-oauth/google';
+
 
 
 export default function Signin() {
   const { mutate: loginMutate } = useUserLogin();
   const navigate= useNavigate();
   const queryClient = useQueryClient();
-  const login = useGoogleLogin({
-    onSuccess: (codeResponse) => console.log(codeResponse),
-    onError: (error) => console.log('Login Failed:', error)
-});
+//   const login = useGoogleLogin({
+//     onSuccess: (codeResponse) => console.log(codeResponse),
+//     onError: (error) => console.log('Login Failed:', error)
+// });
   
   const formik = useFormik({
     initialValues: {
@@ -109,7 +108,7 @@ export default function Signin() {
 
             <div className="mt-6">
               <div className="mt-6 ">
-                <IconButton  onClick={login} icon={Google}  label={"Sign in with Google"} />
+                <IconButton   icon={Google}  label={"Sign in with Google"} />
                
        {/* <LoginWithGoogle/> */}
        
