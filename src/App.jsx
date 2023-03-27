@@ -8,10 +8,13 @@ import Navbar from "./components/header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logout from "./pages/logout";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { CLIENT_ID } from "./contants/constants";
 
 function App() {
   return (
-    <div>
+    <GoogleOAuthProvider clientId={CLIENT_ID}> 
+       <div>
       <ToastContainer limit={1} />
       <Navbar />
 
@@ -22,6 +25,8 @@ function App() {
         <Route exact path="/logout" element={<Logout/>}/>
       </Routes>
     </div>
+    </GoogleOAuthProvider>
+
   );
 }
 

@@ -9,7 +9,7 @@ export default function Navbar() {
   const user= getUser();
 const queryClient = useQueryClient();
 
-queryClient.refetchQueries([GET_USER])
+// queryClient.refetchQueries([GET_USER])
   return (
     <div >
       <header>
