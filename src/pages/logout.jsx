@@ -16,6 +16,7 @@ export default function Logout() {
 
       .then((res) => {
         googleLogout()
+        localStorage.removeItem('jwtToken')
         successToaster('Successfully Logout !');
         navigate('/login');
         if (res.status !== 200) {

@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import { useQuery } from 'react-query';
 import { GET_USER } from '../../contants/query-contant';
 export default function getUser() {
-  const token = Cookies.get('jwtoken');
+  const token = localStorage.getItem('jwtToken');
   const user = true;
 
   return useQuery([GET_USER, token], async () => {
