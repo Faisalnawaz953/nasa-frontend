@@ -14,10 +14,9 @@ export default function useGetImage (){
             `${BASE_URL}/api/nasa-image`,
             {
               headers: { Authorization: `token ${token}` },
+              withCredentials:true
             },
-            {
-              withCredentials: true,
-            }
+            
           );
           return res.data;
         } catch (err) {
