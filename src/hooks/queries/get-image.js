@@ -9,6 +9,7 @@ export default function useGetImage (){
     const token = Cookies.get("jwtoken")
     const navigate= useNavigate();
     return useQuery([GET_IMAGE, token], async () => {
+      console.log("tokenn22",token)
         try {
           const res = await axios.get(
             `${BASE_URL}/api/nasa-image`,
